@@ -15,7 +15,6 @@ Node* deleteNode(Node *head,int x)
         if(i==x) {
             curr = curr->next;
             prev->next = curr;
-            prev = curr;
             break;
         }
         prev = curr;
