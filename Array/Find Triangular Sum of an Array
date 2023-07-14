@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int triangularSum(vector<int>& nums) {
+        int r = nums.size();
+        int c = nums.size();
+        int mat[r][c];
+
+        for(int i=0; i<c; i++){
+            mat[0][i] = nums[i];
+        }
+
+        for(int i=1; i<r; i++){
+            c--;
+            for(int j=0; j<c; j++){
+                int sum = mat[i-1][j] + mat[i-1][j+1];
+                if(sum>9){
+                    sum = sum % 10;
+                }
+                mat[i][j] = sum;
+            }
+        }
+
+        return mat[r-1][0];
+    }
+};
