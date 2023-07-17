@@ -1,0 +1,39 @@
+ bool isRotated(string str1, string str2)
+    {
+        // Your code here
+        
+        //anti - clockwise 
+        string s1 = str1;
+        int i = 0;
+        
+        while(i!=2){
+            string temp = "";
+            temp[0] = str1[0];
+            for(int i=1; i<str1.length(); i++){
+                str1[i-1] = str1[i];
+            }
+            
+            str1[str1.length()-1] = temp[0];
+            i++;
+        }
+        
+        if(str1==str2) return true;
+        
+        //clockwise 
+        str1 = s1;
+          i = 0;
+          while(i!=2){
+            string temp = "";
+            temp[0] = str1[str1.length()-1];
+            for(int i=str1.length()-2; i>=0; i--){
+                str1[i+1] = str1[i];
+            }
+            str1[0] = temp[0];
+            i++;
+          }
+        
+        if(str1==str2) return true;
+        
+        return false;
+        
+    }
