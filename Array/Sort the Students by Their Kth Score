@@ -1,0 +1,38 @@
+Question :- There is a class with m students and n exams. You are given a 0-indexed m x n integer matrix score, where each row represents one student and score[i][j] denotes the score the ith student got in the jth exam. The matrix score contains distinct integers only.
+
+You are also given an integer k. Sort the students (i.e., the rows of the matrix) by their scores in the kth (0-indexed) exam from the highest to the lowest.
+
+Return the matrix after sorting it.
+
+Constraints :- 
+m == score.length
+n == score[i].length
+1 <= m, n <= 250
+1 <= score[i][j] <= 105
+score consists of distinct integers.
+0 <= k < n
+
+Answer :-
+
+class Solution {
+public:
+    vector<vector<int>> sortTheStudents(vector<vector<int>>& score, int k) {
+        int rows = score.size(), cols = score[0].size(), maxIndex, maxNumber;
+        for(int i=0; i<rows-1; i++){
+            maxIndex = i;
+            maxNumber = score[i][k];
+            for(int j=i+1; j<rows; j++){
+                if(score[j][k]>maxNumber){
+                    maxNumber = score[j][k];
+                    maxIndex = j;
+                }
+            }
+
+            for(int j=0; j<cols; j++){
+                swap(score[i][j], score[maxIndex][j]);
+            }
+        }
+
+        return score;
+    }
+};
