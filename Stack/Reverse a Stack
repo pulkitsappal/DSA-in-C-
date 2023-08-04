@@ -1,0 +1,11 @@
+class Solution{
+stack<int> t;
+public:
+    void Reverse(stack<int> &St){
+        if(St.empty()) return;
+            t.push(St.top());
+            St.pop();
+            Reverse(St);
+            St = t;
+    }
+};
