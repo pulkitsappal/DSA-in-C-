@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> rowAndMaximumOnes(vector<vector<int>>& mat) {
+        int rows = mat.size(), cols = mat[0].size();
+        int rowCount = 0, oneCount = 0, count;
+        for(int i=0; i<rows; i++){
+            count = 0;
+            for(int j=0; j<cols; j++){
+                if(mat[i][j]==1){
+                    count++;
+                }
+            }
+
+            if(count>oneCount){
+                oneCount = count;
+                rowCount = i;
+            }
+            
+        }
+        vector<int> ans;
+        ans.push_back(rowCount);
+        ans.push_back(oneCount);
+
+        return ans;
+    }
+};
