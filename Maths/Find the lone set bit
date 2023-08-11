@@ -1,0 +1,17 @@
+#include <bits/stdc++.h> 
+
+int findSetBit(int N) {   
+    // Write your code here
+    int pos = 0, ans, entry = 0;
+    while(N!=0){
+        pos++;
+        if(N%2==1){
+            entry++;
+            ans = pos;
+        }
+        N /= 2;
+    }
+
+    if(ans && entry==1) return ans;
+    return -1;
+}
