@@ -1,0 +1,16 @@
+class Solution
+{
+    public:
+    bool detectLoop(Node* head)
+    {
+        unordered_map<Node*, int> m;
+        
+        while(head){
+            if(m[head]>1) return true;
+            m[head]++;
+            head = head->next;
+        }
+        
+        return false;
+    }
+};
