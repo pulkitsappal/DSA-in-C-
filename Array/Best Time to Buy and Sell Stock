@@ -1,0 +1,17 @@
+int maximumProfit(vector<int> &prices){
+    // Write your code here.
+    int min = prices[0], max = -1, max_profit = 0, profit = 0;
+
+    for(int i=1; i<prices.size(); i++){
+        if(prices[i]<min){
+            max = min = prices[i];
+        }
+        else if(prices[i]>max){
+            max = prices[i];
+        } 
+        profit = max - min;
+        if(profit>max_profit) max_profit = profit;
+    }
+    
+    return max_profit;
+}
