@@ -1,0 +1,12 @@
+bool checkBits(unsigned int n) {
+    // Write your code here.
+    int curr, prev = -1;
+    while(n){
+        curr = n%2;
+        if(curr==prev) return false;
+        prev = curr;
+        n /= 2;
+    }
+
+    return true;
+}
