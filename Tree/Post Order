@@ -21,6 +21,7 @@ void helper(TreeNode *root){
 vector<int> postorderTraversal(TreeNode *root)
 {
     // Write your code here.
+    ans.clear();
     helper(root);
     return ans;
 }
