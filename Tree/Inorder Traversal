@@ -1,0 +1,15 @@
+vector<int> ans;
+
+void helper(TreeNode *root){
+    if(root==NULL) return;
+    ans.push_back(root->data);
+    helper(root->left);
+    helper(root->right);
+}
+vector<int> getPreOrderTraversal(TreeNode *root)
+{
+    // Write your code here.
+    ans.clear();
+    helper(root);
+    return ans;
+}
