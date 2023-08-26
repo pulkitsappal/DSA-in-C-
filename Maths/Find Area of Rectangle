@@ -1,0 +1,15 @@
+//Cosing Ninjas - Find area of rectangle
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    //Write your code here
+    int l, b;
+    scanf("%d", &l);
+    scanf("%d", &b);
+
+    printf("%d", l * b);
+    return 0;
+}
