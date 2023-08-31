@@ -1,27 +1,19 @@
-class Solution
+LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head) 
 {
-    public:
-    //Function to reverse a linked list.
-    struct Node* reverseList(struct Node *head)
-    {
-        // code here
-        // return head of reversed list
-        Node *Prev, *Curr, *Next;
-        Prev = NULL;
-        Curr = Next = head;
-        
-        while(Next!=NULL){
-            Next = Next->next;
-            Curr->next = Prev;
-            Prev = Curr;
-            Curr = Next;
-        }
-        
-        head = Prev;
-        
-        
-        return head;
-        
+
+  //return the heaad of reversed linkedlist
+
+    LinkedListNode<int>* ptr1 = NULL;
+    LinkedListNode<int>* ptr2 = head;
+    LinkedListNode<int>* ptr3 = head;
+
+    while(ptr2!=NULL){
+        ptr3 = ptr3->next;
+        ptr2->next = ptr1;
+        ptr1 = ptr2;
+        ptr2 = ptr3;
     }
     
-};
+    return ptr1;
+
+}
