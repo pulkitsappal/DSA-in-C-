@@ -1,0 +1,11 @@
+void printTable(int start, int end, int step) {
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Print output and don't return it.
+     * Taking input is handled automatically.
+     */
+
+    for(int i=start; i<=end; i+=step){
+        printf("%d %d\n", i, (i-32) * 5/9);
+    }   
+}
