@@ -1,0 +1,21 @@
+bool checkMember(int n){
+
+  /* Don't write main().
+   * Don't read input, it is passed as function argument.
+   * Return output and don't print it.
+   * Taking input and printing output is handled automatically.
+  */
+
+    if(n==0 || n==1) return true;
+    
+    int value = 0, first = 0, second = 1;
+
+    while(value<=n){
+      value = first + second;
+      if(value==n) return true;
+      first = second;
+      second = value;
+    }
+    
+    return false;
+}
