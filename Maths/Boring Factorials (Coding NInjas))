@@ -1,0 +1,15 @@
+#include <bits/stdc++.h> 
+int boringFactorials(int n, int p)
+{
+
+	// Write your code here.
+  // n -> no. whose factorial is to be found
+  //p -> modulus number
+ 	
+long long int fact = 1;
+	for(int i=2; i<=n; i++){
+		fact = ((fact%p)*(i%p))%p;
+	}
+
+	return fact;
+}
