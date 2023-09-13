@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool isStrictlyPalindromic(int n) {
+        vector<int> v, y;
+        while(n){
+            v.push_back(n%2);
+            n /= 2;
+        }
+
+        y = v;
+        reverse(y.begin(), y.end());
+
+        if(v!=y) return false;
+        
+        n = n - 2;
+        while(n){
+            v.push_back(n%2);
+            n /= 2;
+        }
+
+        y = v;
+        reverse(y.begin(), y.end());
+
+        if(v!=y) return false;
+        return true;
+    }
+};
