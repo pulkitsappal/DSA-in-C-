@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool isMonotonic(vector<int>& nums) {
+        int i, n = nums.size();
+        int store = nums[0];
+        bool i_flag = true;
+        bool d_flag = true;
+
+        for(i=1; i<n; i++){
+            if(nums[i]>=store){
+                store = nums[i];
+            }
+            else {
+                i_flag = false;
+                break;
+            }
+        }
+
+        store = nums[0];
+        for(i=1; i<n; i++){
+            if(nums[i]<=store){
+                store = nums[i];
+            }
+            else {
+                d_flag = false;
+                break;
+            }
+        }
+
+        if(i_flag || d_flag) return true;
+        return false;
+    }
+};
