@@ -1,0 +1,26 @@
+class MyHashMap {
+public:
+    unordered_map<int, int> m;
+
+    MyHashMap() {
+        
+    }
+    
+    void put(int key, int value) {
+        if(m.count(key)) m.erase(key);
+            m.insert({key, value});
+    }
+    
+    int get(int key) {
+        try {
+            return m.at(key);
+        }
+        catch(const out_of_range &e) {
+            return -1;
+            }
+    }
+    
+    void remove(int key) {
+        m.erase(key);
+    }
+};
