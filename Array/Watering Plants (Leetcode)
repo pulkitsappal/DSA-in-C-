@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int wateringPlants(vector<int>& plants, int capacity) {
+        int ori_capacity = capacity, i, steps = 0;
+        int n = plants.size();
+        
+        for(i=0; i<n; i++){
+            if(plants[i]<=capacity){
+                capacity -= plants[i];
+                steps++;
+                if(i+1<n && plants[i+1]>capacity){
+                    steps += (i+1);
+                    capacity = ori_capacity;
+                    steps += (i+1);
+                }
+            }
+        }
+
+        return steps;
+    }
+};
