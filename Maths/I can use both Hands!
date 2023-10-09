@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+
+int main() {
+    int l, r, m, t;
+    scanf("%d", &t);
+    
+    while(t--){
+        scanf("%d %d %d", &l, &r, &m);
+        int s = 0;
+        s += ceil((float)m/l);
+        s += floor((float)m/r);
+        
+        printf("%d\n", s);
+    }
+	return 0;
+}
