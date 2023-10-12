@@ -1,0 +1,19 @@
+#include <bits/stdc++.h>
+
+int main() {
+    int t, x1, y1, x2, y2;
+    scanf("%d", &t);
+    
+    while(t--){
+        scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
+        float alex, bob;
+        alex = sqrt((x1*x1) + (y1*y1));
+        bob = sqrt((x2*x2) + (y2*y2));
+        
+        if(alex>bob) printf("ALEX");
+        else if(bob>alex)  printf("BOB");
+        else printf("EQUAL");
+        printf("\n");
+    }
+	return 0;
+}
