@@ -1,0 +1,9 @@
+class Solution {
+  public:
+    int isPossible(int N, int arr[]) {
+        int sum = 0, i;
+        for(i=0; i<N; i++) sum = (sum + arr[i])%3;
+        
+        return sum == 0 ? 1 : 0;
+    }
+};
