@@ -1,0 +1,14 @@
+#include <iostream>
+
+int main() {
+    int t, an;
+    scanf("%d", &t);
+    
+    while(t--){
+        scanf("%d", &an);
+        
+       printf("%d\n", ((an - 2) + 7)/7); 
+        
+    }
+	return 0;
+}
