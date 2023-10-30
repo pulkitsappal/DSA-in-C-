@@ -1,0 +1,29 @@
+class Solution {
+public:
+    ListNode* mergeNodes(ListNode* head) {
+        ListNode* curr = head->next;
+        ListNode* prev = head;
+
+        int sum = 0;
+        
+        while(curr){
+            if(curr->val!=0){
+                sum += curr->val;
+            }
+            else if(curr->val==0){
+                prev->val = sum;
+                prev->next = curr;
+                sum = 0;
+
+                if(curr->next==NULL){
+                    prev->next = NULL;
+                }
+                
+                prev = curr;
+                
+            }
+                curr = curr->next;
+        }
+        return head;
+    }
+};
