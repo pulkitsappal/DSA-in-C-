@@ -1,0 +1,29 @@
+class Solution {
+    map<int, int> m;
+    void helper(TreeNode* root){
+        if(root==NULL) return;
+        m[root->val]++;
+        helper(root->left);
+        helper(root->right);
+    }
+public:
+    vector<int> findMode(TreeNode* root) {
+        helper(root);      
+        vector<int> a;
+
+        map<int, int>::iterator it = m.begin();
+        int max = it->second;
+        
+        for(auto x : m){
+            if(x.second>max){
+                a.clear();
+                a.push_back(x.first);
+                max = x.second;
+            }
+            else if(x.second==max){
+                a.push_back(x.first);
+            }
+        }
+        return a;
+    }
+};
