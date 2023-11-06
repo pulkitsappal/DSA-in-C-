@@ -1,0 +1,19 @@
+class SeatManager {
+    set<int> s;
+public:
+    SeatManager(int n) {
+        for(int i=1; i<=n; i++){
+            s.insert(i);
+        }
+    }
+    
+    int reserve() {
+        int remove = *s.lower_bound(0);
+        s.erase(remove);
+        return remove;
+    }
+    
+    void unreserve(int seatNumber) {
+        s.insert(seatNumber);
+    }
+};
