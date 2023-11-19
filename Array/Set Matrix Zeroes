@@ -1,0 +1,29 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int row = matrix.size(), col = matrix[0].size();
+        int temp[row][col];
+
+        for(int i=0; i<row; i++){
+            for(int j=0; j<col; j++){
+                temp[i][j] = matrix[i][j];
+            }
+        }
+
+        for(int i=0; i<row; i++){
+            for(int j=0; j<col; j++){
+                if(temp[i][j]==0){
+                    //row wise
+                    for(int k=0; k<col; k++){
+                        matrix[i][k] = 0;
+                    }
+
+                    //col wise
+                    for(int k=0; k<row; k++){
+                        matrix[k][j] = 0;
+                    }
+                }
+            }
+        }
+    }
+};
