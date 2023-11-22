@@ -1,0 +1,14 @@
+#include <iostream>
+
+int main() {
+	int t, f, ans;
+	scanf("%d", &t);
+	
+	while(t--){
+	    scanf("%d", &f);
+	    
+	    ans = f * 24 * 1000;
+	    printf("%d\n", ans);
+	}
+	return 0;
+}
