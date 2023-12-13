@@ -1,0 +1,42 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        vector<int> ans;
+        int n = nums.size();
+        int i;
+
+        int prefix[n], postfix[n];
+
+        for(i=0; i<n; i++){
+            if(i==0) prefix[i] = (nums[i]);
+            else{
+                prefix[i] = (nums[i] * prefix[i-1]);
+            }
+        }
+        
+        for(i=n-1; i>=0; i--){
+            if(i==n-1) postfix[i] = (nums[i]);
+            else{
+                postfix[i] = (nums[i] * postfix[i+1]);
+            }
+        }
+
+
+        for(i=0; i<n; i++){
+            int a;
+            if(i==0){
+                a = postfix[i+1] * 1;
+            }
+            else if(i==n-1){
+                
+                a = prefix[i-1] * 1;
+            }
+            else{
+                a = prefix[i-1] * postfix[i+1];
+            }
+            ans.push_back(a);
+        }
+
+            return ans;
+    }
+};
