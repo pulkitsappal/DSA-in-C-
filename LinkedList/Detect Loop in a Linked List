@@ -1,15 +1,14 @@
-class Solution {
-public:
-    bool hasCycle(ListNode *head) {
-        ListNode* slow = head;
-        ListNode* fast = head;
-
-        while(slow && fast && fast->next){
-            slow = slow->next;
-            fast = fast->next->next;
-            if(slow==fast) return true;
+bool detectLoop(Node* head) {
+        // your code here
+        map<Node*, int> m;
+        
+        while(head){
+            if(m[head]==1){
+                return true;
+            }
+            m[head] = 1;
+            head = head->next;
         }
-
+        
         return false;
     }
-};
