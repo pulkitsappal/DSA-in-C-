@@ -1,0 +1,20 @@
+void removeLoop(Node* head)
+    {
+        // code here
+        // just remove the loop without losing any nodes
+        unordered_map<Node*, int> m;
+        
+        Node *prev, *curr = head;
+        
+        while(curr){
+            if(m[curr]!=1){
+                m[curr]++;
+            }
+            else if(m[curr]==1){
+                prev->next = NULL;
+                break;
+            }
+            prev = curr;
+            curr = curr->next;
+        }
+    }
