@@ -1,29 +1,21 @@
 class Solution {
 public:
     int minSteps(string s, string t) {
-        int i;
+        vector<int> count_s(26, 0);
+        vector<int> count_t(26, 0);
 
-        unordered_map<char, int> m;
-        for(i=0; i<s.length(); i++) m[s[i]]++;
-        
-        int initialSize = 0;
-        for(auto x : m) initialSize += x.second;
-
-
-        for(i=0; i<t.length(); i++){
-            if(m.find(t[i])!=m.end()){
-                m[t[i]]--;
-            }
-            if(m[t[i]]==0){
-                m.erase(t[i]);
-            }
+        for(char ch : s){
+            count_s[ch - 'a']++;
+        }
+        for(char ch : t){
+            count_t[ch - 'a']++;
         }
 
-        int finalSize = 0;
-        for(auto x : m) finalSize += x.second;
+        int count = 0;
+        for(int i=0; i<26; i++){
+            count += abs(count_s[i] - count_t[i]);
+        }
 
-        initialSize -= finalSize;
-
-        return t.length() - initialSize;
+        return count/2;
     }
 };
