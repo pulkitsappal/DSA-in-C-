@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int minSteps(string s, string t) {
+        int i;
+
+        unordered_map<char, int> m;
+        for(i=0; i<s.length(); i++) m[s[i]]++;
+        
+        int initialSize = 0;
+        for(auto x : m) initialSize += x.second;
+
+
+        for(i=0; i<t.length(); i++){
+            if(m.find(t[i])!=m.end()){
+                m[t[i]]--;
+            }
+            if(m[t[i]]==0){
+                m.erase(t[i]);
+            }
+        }
+
+        int finalSize = 0;
+        for(auto x : m) finalSize += x.second;
+
+        initialSize -= finalSize;
+
+        return t.length() - initialSize;
+    }
+};
