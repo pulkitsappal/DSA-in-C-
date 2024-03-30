@@ -12,7 +12,7 @@ public:
     int minValue(Node* root) {
         // Code here
         int min = INT_MAX;
-        findMinElement(root, min);;
+        findMinElement(root, min);
         return min;
 
     }
