@@ -1,0 +1,19 @@
+class Solution {
+
+  
+public:
+  void findMinElement(Node *root, int &min){
+      if(!root) return;
+      if(root->data<min) min = root->data;
+      
+      findMinElement(root->left, min);
+      findMinElement(root->right, min);
+  }
+    int minValue(Node* root) {
+        // Code here
+        int min = INT_MAX;
+        findMinElement(root, min);;
+        return min;
+
+    }
+};
