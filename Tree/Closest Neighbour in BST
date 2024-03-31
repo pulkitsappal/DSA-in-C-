@@ -1,0 +1,26 @@
+class Solution {
+  
+  public:
+  
+  void findElement(Node *root, int &ans, int &diff, int cmpr){
+      if(!root) return;
+      
+      if(root->key<=cmpr && cmpr - (root->key)<diff){
+          ans = root->key;
+          diff = cmpr - (root->key);
+      }
+      
+      findElement(root->left, ans, diff, cmpr);
+      findElement(root->right, ans, diff, cmpr);
+  }
+  
+    int findMaxForN(Node* root, int n) {
+        // code here
+        int ans = -1;
+        int diff = INT_MAX;
+        
+        
+        findElement(root, ans, diff, n);
+        return ans;
+    }
+};
