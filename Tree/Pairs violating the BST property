@@ -1,0 +1,51 @@
+void merge(vector<int> &v,int low,int mid,int high,int &ans){
+        int size1 = mid - low + 1;
+        int size2 = high - mid;
+        
+        int arr1[size1], arr2[size2];
+        
+        for(int i=0; i<size1; i++) arr1[i] = v[low+i];
+        for(int i=0; i<size2; i++) arr2[i] = v[mid + 1 + i];
+        
+        int i = 0, j = 0, k = low;
+        
+        while(i<size1 and j<size2){
+            if(arr1[i]<=arr2[j]){
+                v[k] = arr1[i++];
+            }
+            else{
+                v[k] = arr2[j++];
+                ans += (size1 - i);
+            }
+            k++;
+        }
+        
+        while(i<size1){
+            v[k++] = arr1[i++];
+        }
+        while(j<size2){
+            v[k++] = arr2[j++];
+        }
+    }
+    void mergesort(vector<int> &nodes,int low,int high,int &ans){
+        if(low>=high)return;
+        int mid = (low+high)/2;
+        mergesort(nodes,low,mid,ans);
+        mergesort(nodes,mid+1,high,ans);
+        merge(nodes,low,mid,high,ans);
+    }
+    void help(Node *root,vector<int> &nodes){
+        if(!root)return;
+        help(root->left,nodes);
+        nodes.push_back(root->data);
+        help(root->right,nodes);
+    }
+    /*You are required to complete below function */
+    int pairsViolatingBST(int n, Node *root) {
+        // your code goes here
+        vector<int> nodes;
+        help(root,nodes);
+        int ans = 0;
+        mergesort(nodes,0,n-1,ans);
+        return ans;
+    }
