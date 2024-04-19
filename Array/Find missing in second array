@@ -1,0 +1,32 @@
+Question :- Given two integer arrays a of size n and b of size m, the task is to find the numbers which are present in the first array a, but not present in the second array b.
+
+
+
+Input: 
+n = 6, m = 5
+a[] = {1, 2, 3, 4, 5, 10}
+b[] = {2, 3, 1, 0, 5}
+Output: 
+4 10
+Explanation: 
+4 and 10 are present in first array, but not in second array.
+
+
+
+Solution :- vector<int> findMissing(int a[], int b[], int n, int m) 
+	{ 
+	    // Your code goes here
+	    unordered_set<int>st;
+	    for(int i=0;i<m;i++){
+	        st.insert(b[i]);
+	    }
+	    
+	    vector<int>ans;
+	    
+	    for(int i=0;i<n;i++){
+	        if(st.find(a[i])==st.end()){
+	            ans.push_back(a[i]);
+	        }
+	    }
+	    return ans;
+	}
