@@ -1,0 +1,27 @@
+Question :- You are standing on a point (x, y) and you want to go to the origin (0, 0) by taking steps either left or down i.e. from each point you are allowed to move either in (x-1, y) or (x, y-1). Find the number of paths from point to origin.
+
+
+
+Input:
+x = 3, y = 6
+Output: 
+84 
+
+
+
+Solution :- class Solution
+{
+public:
+    int mod = 1e9+7;
+    int help(int x, int y, vector<vector<int>> &v){
+        if(x==0 || y==0) return 1;
+        if(v[x][y]!=-1) return v[x][y];
+        return v[x][y] = (help(x-1, y, v) + help(x, y-1, v))%mod;
+    }
+    int ways(int x, int y)
+    {
+        //code here.
+        vector<vector<int>> v(x+1, vector<int>(y+1, -1));
+        return help(x, y, v);
+    }
+};
