@@ -1,0 +1,32 @@
+Question :- Given two integers n, m and a 2D matrix mat of dimensions nxm, the task is to find the maximum sum of an hourglass.
+
+
+
+Solution :- class Solution {
+  public:
+    int findMaxSum(int n, int m, vector<vector<int>> mat) {
+        // code here
+        if(n<3 || m<3) return -1;
+        
+        int sum = 0, max_sum = INT_MIN;
+        
+        for(int i=0; i<n-2; i++){
+            for(int j=1; j<m-1; j++){
+                sum += mat[i][j-1];
+                sum += mat[i][j];
+                sum += mat[i][j+1];
+                
+                sum += mat[i+1][j];
+                
+                sum += mat[i+2][j-1];
+                sum += mat[i+2][j];
+                sum += mat[i+2][j+1];
+                
+            if(sum>max_sum) max_sum = sum;
+            sum = 0;                
+            }
+        }
+        
+        return max_sum;
+    }
+};
