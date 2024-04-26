@@ -1,0 +1,28 @@
+class Solution {
+  public:
+    vector<int> FindExitPoint(int n, int m, vector<vector<int>>& matrix) {
+        // Code here
+        int i = 0, j = 0, previ = 0, prevj = 0;
+        string direction = "right";
+        
+        while(i>=0 and i<n and j>=0 and j<m){
+            previ = i;
+            prevj = j;
+            if(matrix[i][j]==0){
+                if(direction=="right") j++;
+                else if(direction=="down") i++;
+                else if(direction=="left") j--;
+                else i--;
+            }
+            else{
+                matrix[i][j] = 0;
+                if(direction=="right"){ direction = "down"; i++;}
+                else if(direction=="down"){ direction = "left"; j--;}
+                else if(direction=="left"){ direction = "up"; i--;}
+                else if(direction=="up"){ direction="right"; j++;}
+            }
+        }
+        
+            return {previ, prevj};
+        }
+};
