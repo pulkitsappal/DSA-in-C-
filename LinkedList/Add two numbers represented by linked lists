@@ -1,0 +1,88 @@
+class Solution
+{
+    public:
+    //Function to add two numbers represented by linked list.
+    Node *reverse(Node *node){
+        Node *prev, *curr, *nextPtr;
+        
+        prev = NULL;
+        curr = node;
+        nextPtr = node;
+        
+        while(curr){
+            nextPtr = nextPtr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nextPtr;
+        }
+        
+        return prev;
+    }
+    
+    
+    struct Node* addTwoLists(struct Node* num1, struct Node* num2)
+    {
+        // code here
+        
+        //removing leading zeroes
+        Node *t1 = num1;
+        while(t1 && t1->data==0) t1 = t1->next;
+        
+        Node *t2 = num2;
+        while(t2 && t2->data==0) t2 = t2->next;
+        
+        num1 = t1;
+        num2 = t2;
+        
+        if(!num1 and !num2) return new Node(0);
+        if(!num1) return num2;
+        if(!num2) return num1;
+        
+        
+        //reversing linked lists
+        
+        num1 = reverse(num1);
+        num2 = reverse(num2);
+        
+
+        //adding digits of linked lists
+        t1 = num1;
+        t2 = num2;
+        Node *ans = new Node(0);
+        Node *temp = ans;
+        int carry = 0;
+        
+        while(t1 && t2){
+            int sum = t1->data + t2->data + carry;
+            temp->next = new Node(sum%10);
+            carry = sum/10;
+            temp = temp->next;
+            
+            t1=t1->next;
+            t2=t2->next;
+        }
+        
+        while(t1){
+            int sum = t1->data + carry;
+            temp->next = new Node(sum%10);
+            carry = sum/10;
+            temp = temp->next;
+            
+            t1=t1->next;
+        }
+        
+        
+        while(t2){
+            int sum = t2->data + carry;
+            temp->next = new Node(sum%10);
+            carry = sum/10;
+            temp = temp->next;
+            
+            t2=t2->next;
+        }
+        
+        if(carry) temp->next = new Node(carry);
+        ans = reverse(ans->next);
+        return ans;
+    }
+};
