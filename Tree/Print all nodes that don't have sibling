@@ -1,0 +1,21 @@
+void helper(Node *root, vector<int> &v){
+    if(!root) return;
+    if(root->left && !root->right){
+        v.push_back(root->left->data);
+    }
+    else if(root->right && !root->left){
+        v.push_back(root->right->data);
+    }
+    
+    helper(root->left, v);
+    helper(root->right, v);
+}
+vector<int> noSibling(Node* node)
+{
+    // code here
+    vector<int> v;
+    helper(node, v);
+    if(v.empty()) return {-1};
+    sort(v.begin(), v.end());
+    return v;
+}
