@@ -1,0 +1,62 @@
+Node* addOne(Node *head) 
+    {
+        // Your Code here
+        // return head of list after adding one
+        
+        // reverse the linked list
+        Node *prev, *curr, *Next;
+        prev = NULL, curr = head, Next = NULL;
+        
+         while(curr) {
+            // Store next
+            Next = curr->next;
+            // Reverse current node's pointer
+            curr->next = prev;
+            // Move pointers one position ahead.
+            prev = curr;
+            curr = Next;
+        }
+
+
+        //performing addition        
+        head = prev;
+        Node *temp = NULL;
+        int carry = 1;
+        
+        while(prev){
+            int sum = prev->data + carry;
+            int last = sum%10;
+            carry = sum/10;
+            
+            prev->data = last;
+            
+            if(!prev->next){
+                temp = prev;
+            }
+            prev = prev->next;
+        }
+        
+        
+        if(carry){
+            temp->next = new Node(carry);
+            carry /= 10;
+        }
+        
+        
+        //reversing the ll
+        prev = NULL, curr = head, Next = NULL;
+        
+         while(curr) {
+            // Store next
+            Next = curr->next;
+            // Reverse current node's pointer
+            curr->next = prev;
+            // Move pointers one position ahead.
+            prev = curr;
+            curr = Next;
+        }
+        
+        head = prev;
+        
+        return head;
+    }
