@@ -1,0 +1,39 @@
+struct Node* makeUnion(struct Node* head1, struct Node* head2)
+    {
+        // code here
+        set<int> s;
+        Node *t1 = head1, *t2 = head2;
+        
+        while(t1){
+            if(s.find(t1->data)==s.end()){
+                s.insert(t1->data);
+            }
+            t1 = t1->next;
+        }
+        
+        while(t2){
+            if(s.find(t2->data)==s.end()){
+                s.insert(t2->data);
+            }
+            t2 = t2->next;
+        }
+    
+        
+        t1 = head1;
+        
+        while(!s.empty()){
+            if(!t1->next){
+                t1->next = head2;
+            }
+            auto value = s.begin();
+            t1->data = *value;
+            s.erase(value);
+            if(s.empty()){ t1->next = NULL; break;}
+            t1 = t1->next;
+        }
+        
+        t1->next = NULL;
+        
+        
+        return head1;
+    }
