@@ -1,0 +1,24 @@
+class Solution {
+public:
+int height(TreeNode *root){
+    if(!root) return 0;
+        int left_height = height(root->left);
+        int right_height = height(root->right);
+        return max(left_height, right_height) + 1;
+}
+    void calculateSum(TreeNode *root, int &sum, int level, int height){
+        if(!root) return;
+        if(level==height){ 
+            sum += root->val; 
+            return;
+        }
+        calculateSum(root->left, sum, level+1, height);
+        calculateSum(root->right, sum, level+1, height);
+    }
+    int deepestLeavesSum(TreeNode* root) {
+        int sum = 0, level = 1, h = 0;
+        h = height(root);
+        calculateSum(root, sum, level, h);
+        return sum;
+    }
+};
