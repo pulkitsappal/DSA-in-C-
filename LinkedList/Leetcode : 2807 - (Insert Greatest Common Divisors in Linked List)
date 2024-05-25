@@ -1,0 +1,20 @@
+class Solution {
+public:
+    ListNode* insertGreatestCommonDivisors(ListNode* head) {
+        ListNode* curr, *Next;
+        curr = head;
+        Next = curr->next;
+
+        while(Next){
+            ListNode* newNode = new ListNode(__gcd(curr->val, Next->val));
+
+            curr->next = newNode;
+            newNode->next = Next;
+
+            curr = Next;
+            Next = Next->next;
+        }
+
+        return head;
+    }
+};
