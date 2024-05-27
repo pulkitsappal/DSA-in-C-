@@ -1,0 +1,10 @@
+class Solution {
+public:
+    int commonFactors(int a, int b) {
+        int count = 0, max = a > b ? a : b, min = a < b ? a : b;
+
+        for(int i=1; i<=max; i++) if(max%i==0 && min%i==0) count++;
+        return count; 
+
+    }
+};
