@@ -10,8 +10,7 @@ public:
             calcSubsets(ans, output, index+1, nums);
 
             //include
-            int element = nums[index];
-            output.push_back(element);
+            output.push_back(nums[index);
 
             calcSubsets(ans, output, index+1, nums);
     }
