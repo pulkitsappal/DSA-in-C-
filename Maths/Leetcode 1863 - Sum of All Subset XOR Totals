@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int calcSubsets(int start, vector<int> nums, int xor_sum){
+        if(start == nums.size()){
+            return xor_sum;
+        }
+        int includeSum = calcSubsets(start+1,nums,xor_sum ^ nums[start]);
+        int excludeSum = calcSubsets(start+1,nums,xor_sum);
+        return includeSum + excludeSum;
+    }
+    int subsetXORSum(vector<int>& nums) {
+        int n = nums.size();
+        int ans = 0;
+        vector<int> t;
+
+        return calcSubsets(0, nums, 0);
+
+    }
+};
