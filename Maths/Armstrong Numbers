@@ -1,0 +1,19 @@
+string armstrongNumber(int n){
+        // code here
+        int t = n, count = 0, ans = 0;
+        while(t){
+            t /= 10;
+            count++;
+        }
+        
+        t = n;
+        
+        while(t){
+            int last = t%10;
+            ans += pow(last, count);
+            t /= 10;
+        }
+        
+        if(ans==n) return "Yes";
+        return "No";
+}
