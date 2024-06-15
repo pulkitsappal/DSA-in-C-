@@ -1,0 +1,11 @@
+int countWays(int n){
+        // your code here
+        int a[n+1], mod = 1e9+7;
+        
+        a[1] = 1;
+        a[2] = 2;
+        
+        for(int i=3; i<=n; i++) a[i] = (a[i-1]%mod + a[i-2]%mod)%mod;
+        
+        return a[n];
+}
