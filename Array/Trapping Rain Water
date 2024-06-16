@@ -5,7 +5,7 @@ long long trappingWater(int arr[], int n){
         left[0] = arr[0];
         right[n-1] = arr[n-1];
         
-        long long great = arr[0];
+        long great = arr[0];
 
         for(int i=1; i<n; i++){
             if(arr[i]>great) great = arr[i];
@@ -19,7 +19,7 @@ long long trappingWater(int arr[], int n){
             right[i] = great;
         }
         
-        long long ans = 0;
+        long ans = 0;
 
         for(int i=1; i<n-1; i++) ans += min(left[i], right[i]) - arr[i];
         
