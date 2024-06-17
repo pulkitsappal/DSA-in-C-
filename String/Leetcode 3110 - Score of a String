@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int scoreOfString(string s) {
+        int n = s.length(), ans = 0, prev = s[0];
+
+        for(int i=1; i<n; i++){
+            ans += abs(prev - int(s[i]));
+            prev = s[i];
+        }
+        return ans;
+    }
+};
