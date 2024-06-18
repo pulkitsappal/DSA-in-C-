@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int maximumGap(vector<int>& nums) {
+        if(nums.size()==1) return 0;
+        set<int> s;
+
+        for(int i:nums) s.insert(i);
+
+        
+        auto min = s.begin();
+        int a = INT_MIN, prev = *min;
+
+        for(auto i:s){
+            int diff = i - prev;
+            if(diff>a) a = diff;
+            prev = i;
+        }
+        
+        return a;
+    }
+};
