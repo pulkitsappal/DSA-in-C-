@@ -1,0 +1,42 @@
+class Solution {
+public:
+    bool helper(vector<int> bloomDay, int m, int mid, int k){
+        int bouqCount = 0, consecutive_count = 0;
+
+        for(int i=0; i<bloomDay.size(); i++){
+            if(mid>=bloomDay[i]){
+                consecutive_count++;
+            }
+            else{
+                consecutive_count = 0;
+            }
+
+            if(consecutive_count==k){
+                bouqCount++;
+                if(bouqCount==m) return 1;
+                consecutive_count = 0;
+            }
+        }
+
+        return 0;
+    }
+    int minDays(vector<int>& bloomDay, int m, int k) {
+
+        int minDays = -1;
+        int start_day = 1, end_day = *max_element(begin(bloomDay), end(bloomDay));
+
+        while(start_day <= end_day){
+            int mid = start_day + (end_day - start_day)/2;
+
+            if(helper(bloomDay, m, mid, k)){ //made
+                minDays = mid;
+                end_day = mid - 1;
+            }
+            else{                 
+                start_day = mid + 1;
+            }
+        }
+
+        return minDays;
+    }
+};
