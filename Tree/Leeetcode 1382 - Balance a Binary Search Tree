@@ -1,0 +1,28 @@
+class Solution {
+public:
+    void traverse(TreeNode *root, vector<int> &tree){
+        if(!root) return;
+        
+        traverse(root->left, tree);
+        tree.push_back(root->val);
+        traverse(root->right, tree);
+    }
+    TreeNode* helper(vector<int> tree, int start, int end){
+        if(start>end) return NULL;
+
+        int mid = (start + end)/2;
+
+        TreeNode *newNode = new TreeNode(tree[mid]);
+        newNode->left = helper(tree, start, mid - 1);
+        newNode->right = helper(tree, mid + 1, end);
+
+        return newNode;
+
+    }
+    TreeNode* balanceBST(TreeNode* root) {
+        vector<int> tree;
+        traverse(root, tree);
+
+        return helper(tree, 0, tree.size()-1);
+    }
+};
